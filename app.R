@@ -5,7 +5,7 @@ library(plotly)
 library(ggplot2)
 
 # Load data
-data <- read.csv("data/raw/supply_chain_data.csv")
+data <- read_csv("data/raw/supply_chain_data.csv")
 data <- data |>
   janitor::clean_names()
 
