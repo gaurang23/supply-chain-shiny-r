@@ -10,6 +10,13 @@ The dashboard allows users to filter by product category and transportation mode
 
 **PS:** This is a trimmed down version of the main dashboard, built in Python, which can be found [here](https://019c9b42-3095-b6d6-0bde-f47f0f78a6be.share.connect.posit.cloud/)
 
+## Requirements
+
+This project assumes the following software is already installed:
+
+- R
+- RStudio (optional but recommended)
+
 ## Installation
 
 ### Clone the repository
