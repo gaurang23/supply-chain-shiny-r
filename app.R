@@ -14,6 +14,9 @@ ui <- page_fillable(
   title = "Supply Chain Dashboard",
   layout_sidebar(
     sidebar = sidebar(
+      width = 300,
+      h4("Global Filters"),
+      
       selectInput(
         inputId = "product_dropdown",
         label = "Product Category",
@@ -23,11 +26,12 @@ ui <- page_fillable(
       checkboxGroupInput(
         inputId = "checkbox_group",
         label = "Transportation Mode",
-        choices = c("Air", "Rail", "Road", "Sea"),
-        selected = c("Air", "Rail", "Road", "Sea")
+        choices = unique(data$transportation_modes),
+        selected = unique(data$transportation_modes)
       )
     ),
     layout_columns(
+      fill = TRUE,
       card(
         card_header("Avg. Cost per Unit"),
         h2(textOutput("avg_cost")),
@@ -40,6 +44,7 @@ ui <- page_fillable(
       )
     ),
     layout_columns(
+      fill = TRUE,
       card(
         card_header("Defect Rates by SKU"),
         plotlyOutput("scatterplot"),
@@ -78,18 +83,26 @@ server <- function(input, output, session) {
   })
 
   output$scatterplot <- renderPlotly({
-    plot_ly(
-      data = filtered_data(),
-      x = ~sku,
-      y = ~defect_rates,
-      color = ~supplier_name,
-      type = "scatter",
-      mode = "markers"
-    )
+    p <- ggplot(
+      filtered_data(),
+      aes(
+        x = sku,
+        y = defect_rates,
+        color = supplier_name
+      )
+    ) +
+      geom_point(alpha = 0.8, size = 2) +
+      labs(
+        x = "SKU",
+        y = "Defect Rate",
+        color = "Supplier"
+      ) +
+      theme_minimal()
+    
+    ggplotly(p)
   })
 
   output$heatmap <- renderPlotly({
-    
     heat <- filtered_data() |>
       group_by(transportation_modes, routes) |>
       summarise(avg_cost = mean(costs, na.rm = TRUE), .groups = "drop")
