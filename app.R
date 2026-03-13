@@ -3,11 +3,12 @@ library(bslib)
 library(tidyverse)
 library(plotly)
 library(ggplot2)
+library(janitor)
 
 # Load data
 data <- read_csv("data/raw/supply_chain_data.csv")
 data <- data |>
-  janitor::clean_names()
+  clean_names()
 
 # UI
 ui <- page_fillable(
