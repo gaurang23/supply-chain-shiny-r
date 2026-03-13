@@ -30,3 +30,7 @@ renv::restore()
 ```bash
 shiny::runApp()
 ```
+
+## Live view
+
+You can see the dashboard [here](https://019ce97d-c0d0-d737-da80-3267af860fce.share.connect.posit.cloud/)
