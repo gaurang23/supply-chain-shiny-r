@@ -8,19 +8,25 @@ The dashboard allows users to filter by product category and transportation mode
 - Shipping cost matrix by route and transportation mode
 - Summary metrics such as average cost and inspection pass rate
 
-PS: This is a trimmed down version of the main dashboard, built in Python, which can be found [here](https://019c9b42-3095-b6d6-0bde-f47f0f78a6be.share.connect.posit.cloud/)
+**PS:** This is a trimmed down version of the main dashboard, built in Python, which can be found [here](https://019c9b42-3095-b6d6-0bde-f47f0f78a6be.share.connect.posit.cloud/)
 
 ## Installation
 
-Clone the repository:
+### Clone the repository
 
+```bash
 git clone git@github.com:gaurang23/supply-chain-shiny-r.git
+```
 
-Install dependencies:
+### Install dependencies:
 
+```bash
 install.packages("renv")
 renv::restore()
+```
 
 ## Running the app
 
+```bash
 shiny::runApp()
+```
