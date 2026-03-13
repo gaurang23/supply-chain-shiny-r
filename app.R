@@ -13,6 +13,7 @@ data <- data |>
 # UI
 ui <- page_fillable(
   title = "Supply Chain Dashboard",
+  h2("Supply Chain Dashboard"),
   layout_sidebar(
     sidebar = sidebar(
       width = 300,
