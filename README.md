@@ -21,8 +21,14 @@ git clone git@github.com:gaurang23/supply-chain-shiny-r.git
 ### Install dependencies:
 
 ```bash
-install.packages("renv")
-renv::restore()
+install.packages(c(
+  "shiny",
+  "bslib",
+  "tidyverse",
+  "plotly",
+  "ggplot2",
+  "janitor"
+))
 ```
 
 ## Running the app
